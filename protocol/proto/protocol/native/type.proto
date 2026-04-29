@@ -1,0 +1,25 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.native;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+enum Module
+{
+    SYS    = 0;
+    VDEC   = 1;
+    VENC   = 2;
+    IVPS   = 3;
+    IVE    = 4;
+    ENGINE = 5;
+    DMADIM = 6;
+    DSP = 7;
+}

@@ -1,0 +1,41 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.runtime.memory.request;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+import "protocol/runtime/memory/type.proto";
+
+message Head
+{
+    Api api = 1;
+}
+
+message Body
+{
+    uint64 addr = 1;                 //!< note: using address when api kind is { Free, Flush, Invalidate }
+    optional uint32 size = 2;
+    optional uint64 from = 3;
+    optional CacheType cache = 4;
+    optional uint32 index = 5;       //!< note: sync device index, and sync is a read operation, which means the data is read from the index device to current one
+    optional uint32 value = 6;       //!< note: this is used for set operation, and only 8bit value is valid
+    optional uint32 policy = 7;
+    optional uint32 kind = 8;
+    optional uint32 noresp = 9;
+    optional uint64 phy = 10;
+
+}
+
+message Payload
+{
+    Head head = 1;
+    Body body = 2;
+}

@@ -1,0 +1,32 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.runtime.memory.response;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+import "protocol/runtime/memory/type.proto";
+
+message Head
+{
+    Api api = 1;
+}
+
+message Body
+{
+    sint32 status = 1;
+    optional uint64 addr = 2;
+}
+
+message Payload
+{
+    Head head = 1;
+    Body body = 2;
+}

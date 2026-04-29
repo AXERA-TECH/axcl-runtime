@@ -1,1 +1,1 @@
-SDK_VERSION=V3.10.2_20251215140224
+../../build/version.mak

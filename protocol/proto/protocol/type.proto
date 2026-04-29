@@ -1,0 +1,32 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+enum Module
+{
+    RUNTIME = 0;    //!< runtime api
+    NATIVE  = 1;    //!< rpc for native api of sdk
+}
+
+message Version
+{
+    uint32 major_v = 1;
+    uint32 minor_v = 2;
+    uint32 patch_v = 3;
+}
+
+message Environment
+{
+    uint32 pid = 1;
+    uint32 tid = 2;
+}

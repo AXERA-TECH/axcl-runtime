@@ -1,0 +1,45 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.runtime.usrwork.request;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+import "protocol/runtime/usrwork/type.proto";
+
+message Head
+{
+    Api api = 1;
+}
+
+message Body
+{
+    optional string src_path = 1;
+    optional string dst_path = 2;
+    optional FileTransferPolicy policy = 3;
+
+    optional string path = 4;
+    repeated string argv = 5;
+    optional uint32 pid = 6;
+
+    optional int32 timeout = 7;
+    optional uint32 data_size = 8;
+    optional bytes data = 9;
+
+    optional uint32 heartbeat_interval = 10;
+    optional uint32 port_num = 11;
+    repeated uint32 ports = 12;
+}
+
+message Payload
+{
+    Head head = 1;
+    Body body = 2;
+}

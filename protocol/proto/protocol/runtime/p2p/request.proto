@@ -1,0 +1,51 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.runtime.p2p.request;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+import "protocol/runtime/p2p/type.proto";
+
+message Head
+{
+    Api api = 1;
+}
+
+message Config
+{
+    uint32 target_id = 1;           //!< ep bus number
+    uint64 dma_pci_addr = 2;        //!< dma domain address
+    uint64 mbox_pci_addr = 3;       //!< mailbox domain address
+    uint64 cmm_phy_addr = 4;        //!< physical memory address for dma transfer
+    uint32 cmm_size = 5;            //!< physical memory size
+}
+
+message BandWidthTestConfig
+{
+    uint32 target_id = 1;           //!< destination ep bus number
+    uint32 loop_count = 2;          //!< loop count to transfer
+    uint32 loop_interval = 3;       //!< loop interval time in microseconds
+    uint32 chunk_size = 4;          //!< chunk size to transfer in bytes
+}
+
+message Body
+{
+    repeated Config config = 1;                   //!< p2p config of all eps
+    optional uint32 target_id = 2;                //!< source ep bus number
+    repeated BandWidthTestConfig bwt_config = 3;  //!< bandwidth test config and start test
+    optional int32 bwt_timeout = 4;               //!< timeout in milliseconds for fetch result
+}
+
+message Payload
+{
+    Head head = 1;
+    Body body = 2;
+}

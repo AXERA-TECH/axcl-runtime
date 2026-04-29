@@ -1,0 +1,40 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.runtime.p2p.response;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+import "protocol/runtime/p2p/type.proto";
+
+message Head
+{
+    Api api = 1;
+}
+
+message BandWidthTestResult
+{
+    uint32 target_id = 1;          //!< bus number
+    uint64 avg = 2;                //!< average chunk transfer elapsed time in microseconds
+    uint64 min = 3;                //!< min chunk transfer elapsed time in microseconds
+    uint64 max = 4;                //!< max chunk transfer elapsed time in microseconds
+}
+
+message Body
+{
+    sint32 status = 1;                //!< operation status code, 0 for success
+    BandWidthTestResult bwt_res = 2;  //!< bandwidth test results
+}
+
+message Payload
+{
+    Head head = 1;
+    Body body = 2;
+}

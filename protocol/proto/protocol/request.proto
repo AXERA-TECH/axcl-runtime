@@ -1,0 +1,44 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.request;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+import "protocol/type.proto";
+import "protocol/runtime/request.proto";
+import "protocol/native/request.proto";
+
+message Head
+{
+    uint64 seq_num = 1;
+    Version version = 2;
+    Environment env = 3;
+    uint64 timestamp = 4;
+    Module module = 5;
+}
+
+message Body
+{
+    optional axcl.runtime.request.Payload runtime = 1;
+    optional axcl.native.request.Payload native = 2;
+}
+
+message Tail
+{
+    uint32 crc = 1;
+}
+
+message Payload
+{
+    Head head = 1;
+    Body body = 2;
+    Tail tail = 3;
+}

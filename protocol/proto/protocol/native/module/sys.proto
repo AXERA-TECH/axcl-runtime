@@ -1,0 +1,88 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.native.module.sys;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+enum Api
+{
+    AX_SYS_Init = 0;
+    AX_SYS_Deinit = 1;
+    AX_SYS_MemAlloc = 2;
+    AX_SYS_MemAllocCached = 3;
+    AX_SYS_MemFree = 4;
+    AX_SYS_Mmap = 5;
+    AX_SYS_MmapCache = 6;
+    AX_SYS_MmapFast = 7;
+    AX_SYS_MmapCacheFast = 8;
+    AX_SYS_Munmap = 9;
+    AX_SYS_MflushCache = 10;
+    AX_SYS_MinvalidateCache = 11;
+    AX_SYS_MemGetBlockInfoByPhy = 12;
+    AX_SYS_MemGetBlockInfoByVirt = 13;
+    AX_SYS_MemGetPartitionInfo = 14;
+    AX_SYS_MemSetConfig = 15;
+    AX_SYS_MemGetConfig = 16;
+    AX_SYS_MemQueryStatus = 17;
+
+    AX_SYS_Link = 31;
+    AX_SYS_UnLink = 32;
+    AX_SYS_GetLinkByDest = 33;
+    AX_SYS_GetLinkBySrc = 34;
+
+    AX_POOL_SetConfig = 41;
+    AX_POOL_GetConfig = 42;
+    AX_POOL_Init = 43;
+    AX_POOL_Exit = 44;
+    AX_POOL_CreatePool = 45;
+    AX_POOL_DestroyPool = 46;
+    AX_POOL_GetBlock = 47;
+    AX_POOL_ReleaseBlock = 48;
+    AX_POOL_PhysAddr2Handle = 49;
+    AX_POOL_Handle2PhysAddr = 50;
+    AX_POOL_Handle2MetaPhysAddr = 51;
+    AX_POOL_Handle2PoolId = 52;
+    AX_POOL_Handle2BlkSize = 53;
+    AX_POOL_MmapPool = 54;
+    AX_POOL_MunmapPool = 55;
+    AX_POOL_GetBlockVirAddr = 56;
+    AX_POOL_GetMetaVirAddr = 57;
+    AX_POOL_IncreaseRefCnt = 58;
+    AX_POOL_DecreaseRefCnt = 59;
+
+    AX_SYS_GetCurPTS = 71;
+    AX_SYS_InitPTSBase = 72;
+    AX_SYS_SyncPTS = 73;
+
+    AX_SYS_GetChipType = 81;
+
+    AX_SYS_SetLogLevel = 91;
+    AX_SYS_SetLogTarget = 92;
+    AX_SYS_EnableTimestamp = 93;
+
+    AX_SYS_Sleep = 101;
+    AX_SYS_WakeLock = 102;
+    AX_SYS_WakeUnlock = 103;
+    AX_SYS_RegisterEventCb = 104;
+    AX_SYS_UnregisterEventCb = 105;
+}
+
+message Request
+{
+    Api api = 1;
+    repeated bytes parameters = 2;
+}
+
+message Response
+{
+    Api api = 1;
+    repeated bytes parameters = 2;
+}

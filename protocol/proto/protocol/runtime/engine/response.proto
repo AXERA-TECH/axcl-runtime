@@ -1,0 +1,49 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.runtime.engine.response;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+import "protocol/runtime/engine/type.proto";
+
+message Head
+{
+    ApiKind api = 1;
+}
+
+message Body
+{
+    int32 status = 1;
+    optional NpuKind npu_kind = 2;      //!< api: {GetNPUType}
+    optional string engine_version = 3; //!< api: {GetEngineVersion}
+
+    optional uint64 handle = 4;         //!< api: {...}
+
+    optional string model_version = 5;  //!< api: {GetModelVersion}
+    optional ModelKind model_kind = 6;  //!< api: {GetModelType}
+
+    optional uint64 sys = 7;            //!< api: {GetMemoryUsage}
+    optional uint64 cmm = 8;            //!< api: {GetMemoryUsage}
+
+    optional uint64 context = 9;        //!< api: {CreateContext}
+    optional uint32 affinity = 15;      //!< api: {GetAffinity, GetContextAffinity}
+
+    optional IoMeta meta   = 11;        //!< api: {GetModelIoInfo}
+    repeated float elapsed = 12;
+
+    optional uint32 noresp = 13;
+}
+
+message Payload
+{
+    Head head = 1;
+    Body body = 2;
+}

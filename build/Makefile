@@ -8,11 +8,25 @@ TARGET_PATH	   := $(AXCL_HOME_PATH)/out/$(NAME)_$(OS)_${HOST}
 
 # Base dir
 THIRD_PATH     := $(AXCL_HOME_PATH)/3rdparty
+LOGGER_PATH    := $(AXCL_HOME_PATH)/logger
+COMM_PATH      := $(AXCL_HOME_PATH)/comm
+PROTOCOL_PATH  := $(AXCL_HOME_PATH)/protocol
+HOST_PATH      := $(AXCL_HOME_PATH)/host
 SAMPLE_PATH    := $(AXCL_HOME_PATH)/sample
+TEST_PATH      := $(AXCL_HOME_PATH)/test
 DRV_PATH       := $(AXCL_HOME_PATH)/drv
+PYTHON_PATH    := $(AXCL_HOME_PATH)/python
+FFMPEG_SRC     := $(THIRD_PATH)/ffmpeg
 
 SUBDIRS        += $(THIRD_PATH) \
-                  $(SAMPLE_PATH)
+                  $(LOGGER_PATH) \
+                  $(DRV_PATH) \
+                  $(COMM_PATH)  \
+                  $(PROTOCOL_PATH) \
+                  $(HOST_PATH) \
+                  $(FFMPEG_SRC) \
+                  $(SAMPLE_PATH) \
+                  $(TEST_PATH)
 
 ############################################################################
 #	build
@@ -28,14 +42,24 @@ SUBDIRS_INSTALL = $(addsuffix .install, $(SUBDIRS))
 
 default: $(SUBDIRS)
 
-all: $(SUBDIRS_ALL)
+prepare:
+ifeq ($(HOST),x86)
+	@bash $(CUR_PATH)/check_compile_env.sh
+endif
+
+all: prepare $(SUBDIRS_ALL)
 	@echo -e $(GREEN)"\nBuild All Modules success!!\n"  $(DONE)
 
 install: $(SUBDIRS_INSTALL)
 	@echo -e $(CYAN)"\nInstall success!!\n"  $(DONE)
 
+ifeq ($(HOST),x86)
+	@bash $(PYTHON_PATH)/build.sh
+	@echo -e $(CYAN)"\nBuild python install package success!!\n"  $(DONE)
+endif
+
 clean:	$(SUBDIRS_CLEAN)
-#	@rm -rf $(TARGET_PATH)
+	@rm -rf $(TARGET_PATH)
 	@echo -e $(GREEN)"\nClean success!!\n"  $(DONE)
 
 

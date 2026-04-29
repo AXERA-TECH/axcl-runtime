@@ -29,6 +29,7 @@ AXCL_EXPORT axclError axclrtCreateContext(axclrtContext *context, int32_t device
 AXCL_EXPORT axclError axclrtDestroyContext(axclrtContext context);
 AXCL_EXPORT axclError axclrtSetCurrentContext(axclrtContext context);
 AXCL_EXPORT axclError axclrtGetCurrentContext(axclrtContext *context);
+AXCL_EXPORT axclError axclrtGetDefaultContext(axclrtContext *context, int32_t deviceId);
 
 #ifdef __cplusplus
 }

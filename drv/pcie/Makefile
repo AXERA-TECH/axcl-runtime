@@ -1,4 +1,8 @@
-SUBDIRS = driver
+SUBDIRS = dma msg
+
+ifeq ($(HOST),ax650)
+SUBDIRS += driver
+endif
 
 ################################################################################
 #	prepare param
