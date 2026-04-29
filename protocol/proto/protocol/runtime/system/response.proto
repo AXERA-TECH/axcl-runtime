@@ -1,0 +1,68 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.runtime.system.response;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+import "protocol/runtime/system/type.proto";
+
+message Head
+{
+    Module module = 1;
+}
+
+message Alive
+{
+
+}
+
+message Latency
+{
+    bytes data = 1;
+}
+
+message Log
+{
+    string name = 1;    //!< file name including extension, compress all files into one, like .tgz ...etc.
+    bytes content = 2;
+}
+
+message Shell
+{
+    int32 status = 1;
+    string output = 2;
+}
+
+message Control
+{
+    Command cmd = 1;
+    optional uint32 pid = 2;
+    optional uint32 tid = 3;
+    optional uint32 context = 4;
+    optional Shell shell = 5;
+    optional int32 status = 6;
+    optional uint32 stream = 7;
+    optional uint32 event = 8;
+}
+
+message Body
+{
+    optional Alive alive = 1;
+    optional Latency latency = 2;
+    optional Log log = 3;
+    optional Control control = 4;
+}
+
+message Payload
+{
+    Head head = 1;
+    Body body = 2;
+}

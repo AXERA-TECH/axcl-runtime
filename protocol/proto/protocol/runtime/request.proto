@@ -1,0 +1,40 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.runtime.request;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+import "protocol/runtime/type.proto";
+import "protocol/runtime/system/request.proto";
+import "protocol/runtime/memory/request.proto";
+import "protocol/runtime/engine/request.proto";
+import "protocol/runtime/p2p/request.proto";
+import "protocol/runtime/usrwork/request.proto";
+
+message Head
+{
+    Module module = 1;
+}
+
+message Body
+{
+    optional axcl.runtime.system.request.Payload system = 1;
+    optional axcl.runtime.memory.request.Payload memory = 2;
+    optional axcl.runtime.engine.request.Payload engine = 3;
+    optional axcl.runtime.p2p.request.Payload p2p = 4;
+    optional axcl.runtime.usrwork.request.Payload usrwork = 5;
+}
+
+message Payload
+{
+    Head head = 1;
+    Body body = 2;
+}

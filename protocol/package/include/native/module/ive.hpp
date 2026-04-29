@@ -1,0 +1,55 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+#pragma once
+
+#include <cstdint>
+
+namespace axcl::pkg::native {
+
+enum class IVE_API : int32_t {
+    AX_IVE_Init = 0,
+    AX_IVE_Exit = 1,
+    AX_IVE_Query = 2,
+    AX_IVE_DMA = 3,
+    AX_IVE_Add = 4,
+    AX_IVE_Sub = 5,
+    AX_IVE_And = 6,
+    AX_IVE_Or = 7,
+    AX_IVE_Xor = 8,
+    AX_IVE_Mse = 9,
+    AX_IVE_CannyHysEdge = 10,
+    AX_IVE_CannyEdge = 11,
+    AX_IVE_CCL = 12,
+    AX_IVE_Erode = 13,
+    AX_IVE_Dilate = 14,
+    AX_IVE_Filter = 15,
+    AX_IVE_Hist = 16,
+    AX_IVE_EqualizeHist = 17,
+    AX_IVE_Integ = 18,
+    AX_IVE_MagAndAng = 19,
+    AX_IVE_Sobel = 20,
+    AX_IVE_GMM = 21,
+    AX_IVE_GMM2 = 22,
+    AX_IVE_Thresh = 23,
+    AX_IVE_16BitTo8Bit = 24,
+    AX_IVE_CropImage = 25,
+    AX_IVE_CropResize = 26,
+    AX_IVE_CropResizeForSplitYUV = 27,
+    AX_IVE_CSC = 28,
+    AX_IVE_CropResize2 = 29,
+    AX_IVE_CropResize2ForSplitYUV = 30,
+    AX_IVE_MAU_MatMul = 31,
+    AX_IVE_NPU_CreateMatMulHandle = 32,
+    AX_IVE_NPU_DestroyMatMulHandle = 33,
+    AX_IVE_NPU_MatMul = 34,
+};
+
+}  // namespace axcl::pkg::native

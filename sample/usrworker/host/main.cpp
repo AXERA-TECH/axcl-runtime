@@ -6,9 +6,6 @@
 #include "cmdline.h"
 #include "logger.h"
 #include "signal_handler.hpp"
-#ifdef WINDOWS
-#include "axcl_crashdump.h"
-#endif
 
 static int32_t active_device(int32_t device_index);
 static int32_t deactive_device();
@@ -16,10 +13,6 @@ static int32_t launch_usrworker(const char* src, const char* dst);
 static int32_t device_id;
 
 int main(int argc, char* argv[]) {
-#ifdef WINDOWS
-    // Initialize crash dump functionality on Windows
-    axclInitializeCrashDump(nullptr);
-#endif
     int ret = 0;
     signal_handler handler;
 
@@ -61,9 +54,6 @@ int main(int argc, char* argv[]) {
     axclFinalize();
 
     SAMPLE_LOG_I("============== %s sample exited %s %s ==============\n", AXCL_BUILD_VERSION, __DATE__, __TIME__);
-#ifdef WINDOWS
-    axclUninitializeCrashDump();
-#endif
     return 0;
 }
 

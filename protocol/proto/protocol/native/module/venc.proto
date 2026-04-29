@@ -1,0 +1,74 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.native.module.venc;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+enum Api
+{
+    AX_VENC_Init = 0;
+    AX_VENC_Deinit = 1;
+    AX_VENC_CreateChn = 2;
+    AX_VENC_CreateChnEx = 3;
+    AX_VENC_DestroyChn = 4;
+    AX_VENC_SendFrame = 5;
+    AX_VENC_SendFrameEx = 6;
+    AX_VENC_SelectGrp = 7;
+    AX_VENC_SelectClearGrp = 8;
+    AX_VENC_SelectGrpAddChn = 9;
+    AX_VENC_SelectGrpDeleteChn = 10;
+    AX_VENC_SelectGrpQuery = 11;
+    AX_VENC_GetFd = 12;
+    AX_VENC_GetStream = 13;
+    AX_VENC_ReleaseStream = 14;
+    AX_VENC_GetStreamBufInfo = 15;
+    AX_VENC_StartRecvFrame = 16;
+    AX_VENC_StopRecvFrame = 17;
+    AX_VENC_ResetChn = 18;
+    AX_VENC_SetRoiAttr = 19;
+    AX_VENC_GetRoiAttr = 20;
+    AX_VENC_SetRcParam = 21;
+    AX_VENC_GetRcParam = 22;
+    AX_VENC_SetModParam = 23;
+    AX_VENC_GetModParam = 24;
+    AX_VENC_SetVuiParam = 25;
+    AX_VENC_GetVuiParam = 26;
+    AX_VENC_SetChnAttr = 27;
+    AX_VENC_GetChnAttr = 28;
+    AX_VENC_SetRateJamStrategy = 29;
+    AX_VENC_GetRateJamStrategy = 30;
+    AX_VENC_SetSuperFrameStrategy = 31;
+    AX_VENC_GetSuperFrameStrategy = 32;
+    AX_VENC_SetIntraRefresh = 33;
+    AX_VENC_GetIntraRefresh = 34;
+    AX_VENC_SetUsrData = 35;
+    AX_VENC_GetUsrData = 36;
+    AX_VENC_SetSliceSplit = 37;
+    AX_VENC_GetSliceSplit = 38;
+    AX_VENC_RequestIDR = 39;
+    AX_VENC_QueryStatus = 40;
+    AX_VENC_SetJpegParam = 41;
+    AX_VENC_GetJpegParam = 42;
+    AX_VENC_JpegEncodeOneFrame = 43;
+    AX_VENC_JpegGetThumbnail = 44;
+}
+
+message Request
+{
+    Api api = 1;
+    repeated bytes parameters = 2;
+}
+
+message Response
+{
+    Api api = 1;
+    repeated bytes parameters = 2;
+}

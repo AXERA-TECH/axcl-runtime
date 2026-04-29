@@ -1,0 +1,46 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.native.response;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+import "protocol/native/type.proto";
+import "protocol/native/module/sys.proto";
+import "protocol/native/module/vdec.proto";
+import "protocol/native/module/venc.proto";
+import "protocol/native/module/ivps.proto";
+import "protocol/native/module/ive.proto";
+import "protocol/native/module/engine.proto";
+import "protocol/native/module/dmadim.proto";
+import "protocol/native/module/dsp.proto";
+
+message Head
+{
+    Module module = 1;
+}
+
+message Body
+{
+    optional axcl.native.module.sys.Response sys = 1;
+    optional axcl.native.module.vdec.Response vdec = 2;
+    optional axcl.native.module.venc.Response venc = 3;
+    optional axcl.native.module.ivps.Response ivps = 4;
+    optional axcl.native.module.ive.Response ive = 5;
+    optional axcl.native.module.engine.Response engine = 6;
+    optional axcl.native.module.dmadim.Response dmadim = 7;
+    optional axcl.native.module.dsp.Response dsp = 8;
+}
+
+message Payload
+{
+    Head head = 1;
+    Body body = 2;
+}

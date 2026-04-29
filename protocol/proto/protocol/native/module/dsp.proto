@@ -1,0 +1,38 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.native.module.dsp;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+enum Api
+{
+    AX_DSP_PowerOn = 0;
+    AX_DSP_PowerOff = 1;
+    AX_DSP_LoadBin = 2;
+    AX_DSP_EnableCore = 3;
+    AX_DSP_DisableCore = 4;
+    AX_DSP_PRC = 5;
+    AX_DSP_Query = 6;
+
+    // NOTICE: DSP CV API will not be add for now
+}
+
+message Request
+{
+    Api api = 1;
+    repeated bytes parameters = 2;
+}
+
+message Response
+{
+    Api api = 1;
+    repeated bytes parameters = 2;
+}

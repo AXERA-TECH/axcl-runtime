@@ -13,6 +13,7 @@ Group:    System/Kernel
 %define module_name axcl
 
 %global __requires_exclude ^libaxclrt_worker.*$
+%global __strip /bin/true
 
 License:  GPL
 Packager: xiaoqiang <xiaoqiang@axera-tech.com>

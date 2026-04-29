@@ -1,0 +1,76 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.runtime.system.request;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+import "protocol/runtime/system/type.proto";
+
+message Head
+{
+    Module module = 1;
+}
+
+message Alive
+{
+
+}
+
+message Latency
+{
+    bytes data = 1;
+}
+
+message Log
+{
+    uint32 type = 1; //!< bit mask: 0x01: daemon;  0x02: worker;  0x10: syslog;  0x20: kernel
+    uint32 flag = 2; //!< reserved, no use
+}
+
+message Shell
+{
+    string cmd = 1;
+    repeated string args = 2;
+}
+
+message PCIeSubID
+{
+    uint32 vendor_id = 1;
+    uint32 device_id = 2;
+}
+
+message Control
+{
+    Command cmd = 1;
+    optional uint32 pid = 2;
+    optional uint32 tid = 3;
+    optional uint32 context = 4;
+    optional Shell shell = 5;
+    optional PCIeSubID pcie_sub_id = 6;
+    optional uint32 stream = 7;
+    optional uint32 event = 8;
+    optional int32 timeout = 9;
+    optional uint32 noresp = 10;
+}
+
+message Body
+{
+    optional Alive alive = 1;
+    optional Latency latency = 2;
+    optional Log log = 3;
+    optional Control control = 4;
+}
+
+message Payload
+{
+    Head head = 1;
+    Body body = 2;
+}

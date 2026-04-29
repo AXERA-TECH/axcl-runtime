@@ -1,0 +1,108 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.runtime.engine;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+enum ApiKind
+{                               //!< host -> engine                                     engine -> host
+    InitNpu = 0;                //!< npu_kind                                           none
+    FinalNpu = 1;               //!< none                                               none
+    GetNpuType = 2;             //!< none                                               npu_kind
+    GetEngineVersion = 3;       //!< none                                               engine_version
+    LoadModel = 4;              //!< address, size                                      handle
+    GetModelVersion = 5;        //!< handle, only support by handle for simple          model_version
+    GetModelType = 6;           //!< handle, only support by handle for simple          model_kind
+    GetMemoryUsage = 7;         //!< handle                                             memory
+    UnloadModel = 8;            //!< handle                                             none
+    CreateContext = 9;          //!< handle                                             context
+    GetModelIoInfo = 10;        //!< handle, {optional group}                           inputs, outputs
+    RunModel = 11;              //!< handle, context, batch, group                      io
+    SetAffinity = 12;           //!< handle, affinity                                   none
+    GetAffinity = 13;           //!< handle                                             affinity
+    P2P = 14;                   //!< for p2p test
+}
+
+enum NpuKind
+{
+    Disable = 0;
+    Split = 1;
+    LittleBig = 2;
+    BigLittle = 3;
+}
+
+enum ModelKind
+{
+    NPU1 = 0;
+    NPU2 = 1;
+    NPU3 = 2;
+}
+
+enum FormatKind
+{
+    INT4 = 0;
+    UINT4 = 1;
+    INT8 = 2;
+    UINT8 = 3;
+    INT16 = 4;
+    UINT16 = 5;
+    INT32 = 6;
+    UINT32 = 7;
+    INT64 = 8;
+    UINT64 = 9;
+    FP4 = 10;
+    FP8 = 11;
+    FP16 = 12;
+    BF16 = 13;
+    FP32 = 14;
+    FP64 = 15;
+}
+
+enum LayoutKind
+{
+    NONE = 0;
+    NCHW = 1;
+    NHWC = 2;
+}
+
+message OneMeta
+{
+    uint64 size = 1;
+    repeated uint64 shape = 2;
+    repeated uint64 stride = 3;
+}
+
+message Meta
+{
+    string name = 1;
+    LayoutKind layout = 2;
+    FormatKind format = 3;
+    repeated OneMeta groups = 4;
+}
+
+message IoMeta
+{
+    repeated Meta inputs = 1;
+    repeated Meta outputs = 2;
+}
+
+message Desc
+{
+    uint64 address = 2;
+    uint64 size = 3;
+}
+
+message IoDesc
+{
+    repeated Desc inputs = 1;
+    repeated Desc outputs = 2;
+    uint32 batch = 3;
+}

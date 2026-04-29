@@ -1,0 +1,66 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co.; Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co.; Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co.; Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.native.module.vdec;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+//!< append new API into end; NOT insert into the middle.
+enum Api
+{
+    AX_VDEC_Init = 0;
+    AX_VDEC_Deinit = 1;
+    AX_VDEC_SetModParam = 2;
+    AX_VDEC_GetModParam = 3;
+    AX_VDEC_ExtractStreamHeaderInfo = 4;
+    AX_VDEC_CreateGrp = 5;
+    AX_VDEC_CreateGrpEx = 6;
+    AX_VDEC_DestroyGrp = 7;
+    AX_VDEC_GetGrpAttr = 8;
+    AX_VDEC_SetGrpAttr = 9;
+    AX_VDEC_StartRecvStream = 10;
+    AX_VDEC_StopRecvStream = 11;
+    AX_VDEC_QueryStatus = 12;
+    AX_VDEC_ResetGrp = 13;
+    AX_VDEC_SetGrpParam = 14;
+    AX_VDEC_GetGrpParam = 15;
+    AX_VDEC_SelectGrp = 16;
+    AX_VDEC_SendStream = 17;
+    AX_VDEC_GetChnFrame = 18;
+    AX_VDEC_ReleaseChnFrame = 19;
+    AX_VDEC_GetUserData = 20;
+    AX_VDEC_ReleaseUserData = 21;
+    AX_VDEC_SetUserPic = 22;
+    AX_VDEC_EnableUserPic = 23;
+    AX_VDEC_DisableUserPic = 24;
+    AX_VDEC_SetDisplayMode = 25;
+    AX_VDEC_GetDisplayMode = 26;
+    AX_VDEC_AttachPool = 27;
+    AX_VDEC_DetachPool = 28;
+    AX_VDEC_EnableChn = 29;
+    AX_VDEC_DisableChn = 30;
+    AX_VDEC_SetChnAttr = 31;
+    AX_VDEC_GetChnAttr = 32;
+    AX_VDEC_JpegDecodeOneFrame = 33;
+    AX_VDEC_GetStreamBufInfo = 34;
+    AX_VDEC_GetVuiParam = 35;
+}
+
+message Request
+{
+    Api api = 1;
+    repeated bytes parameters = 2;
+}
+
+message Response
+{
+    Api api = 1;
+    repeated bytes parameters = 2;
+}

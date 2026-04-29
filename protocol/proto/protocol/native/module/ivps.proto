@@ -1,0 +1,116 @@
+/**************************************************************************************************
+ *
+ * Copyright (c) 2019-2024 Axera Semiconductor Co., Ltd. All Rights Reserved.
+ *
+ * This source file is the property of Axera Semiconductor Co., Ltd. and
+ * may not be copied or distributed in any isomorphic form without the prior
+ * written consent of Axera Semiconductor Co., Ltd.
+ *
+ **************************************************************************************************/
+
+syntax = "proto3";
+package axcl.native.module.ivps;
+option optimize_for = @AXCL_PROTOCOL_OPTIMIZED_OPTION@;
+
+enum Api {
+    AX_IVPS_Init = 0;
+    AX_IVPS_Deinit = 1;
+    AX_IVPS_CreateGrp = 2;
+    AX_IVPS_CreateGrpEx = 3;
+    AX_IVPS_DestoryGrp = 4;
+    AX_IVPS_SetPipelineAttr = 5;
+    AX_IVPS_GetPipelineAttr = 6;
+    AX_IVPS_StartGrp = 7;
+    AX_IVPS_StopGrp = 8;
+    AX_IVPS_EnableChn = 9;
+    AX_IVPS_DisableChn = 10;
+    AX_IVPS_SendFrame = 11;
+    AX_IVPS_GetChnFrame = 12;
+    AX_IVPS_ReleaseChnFrame = 13;
+    AX_IVPS_GetGrpFrame = 14;
+    AX_IVPS_ReleaseGrpFrame = 15;
+    AX_IVPS_GetChnFd = 16;
+    AX_IVPS_GetDebugFifoFrame = 17;
+    AX_IVPS_ReleaseDebugFifoFrame = 18;
+    AX_IVPS_CloseAllFd = 19;
+    AX_IVPS_SetGrpLDCAttr = 20;
+    AX_IVPS_GetGrpLDCAttr = 21;
+    AX_IVPS_SetChnLDCAttr = 22;
+    AX_IVPS_GetChnLDCAttr = 23;
+    AX_IVPS_SetGrpPoolAttr = 24;
+    AX_IVPS_SetChnPoolAttr = 25;
+    AX_IVPS_SetGrpUserFRC = 26;
+    AX_IVPS_SetChnUserFRC = 27;
+    AX_IVPS_SetGrpCrop = 28;
+    AX_IVPS_GetGrpCrop = 29;
+    AX_IVPS_SetChnAttr = 30;
+    AX_IVPS_GetChnAttr = 31;
+    AX_IVPS_EnableBackupFrame = 32;
+    AX_IVPS_DisableBackupFrame = 33;
+    AX_IVPS_ResetGrp = 34;
+    AX_IVPS_GetEngineDutyCycle = 40;
+
+    AX_IVPS_RGN_Create = 41;
+    AX_IVPS_RGN_Destroy = 42;
+    AX_IVPS_RGN_AttachToFilter = 43;
+    AX_IVPS_RGN_DetachFromFilter = 44;
+    AX_IVPS_RGN_Update = 45;
+
+    AX_IVPS_CmmCopyTdp = 51;
+    AX_IVPS_FlipAndRotationTdp = 52;
+    AX_IVPS_CscTdp = 53;
+    AX_IVPS_CropResizeTdp = 54;
+    AX_IVPS_CropResizeV2Tdp = 55;
+    AX_IVPS_AlphaBlendingTdp = 56;
+    AX_IVPS_AlphaBlendingV3Tdp = 57;
+    AX_IVPS_DrawOsdTdp = 58;
+    AX_IVPS_DrawMosaicTdp = 59;
+    
+    AX_IVPS_CmmCopyVpp = 65;
+    AX_IVPS_CropResizeVpp = 66;
+    AX_IVPS_CropResizeV2Vpp = 67;
+    AX_IVPS_CropResizeV3Vpp = 68;
+    AX_IVPS_CscVpp = 69;
+    AX_IVPS_DrawMosaicVpp = 70;
+    AX_IVPS_SetScaleCoefLevelVpp = 71;
+    AX_IVPS_GetScaleCoefLevelVpp = 72;
+
+    AX_IVPS_CmmCopyVgp = 81;
+    AX_IVPS_CscVgp = 82;
+    AX_IVPS_CropResizeVgp = 83;
+    AX_IVPS_CropResizeV2Vgp = 84;
+    AX_IVPS_CropResizeV4Vgp = 85;
+    AX_IVPS_AlphaBlendingVgp = 86;
+    AX_IVPS_AlphaBlendingV2Vgp = 87;
+    AX_IVPS_AlphaBlendingV3Vgp = 88;
+    AX_IVPS_DrawOsdVgp = 89;
+    AX_IVPS_DrawMosaicVgp = 90;
+    AX_IVPS_SetScaleCoefLevelVgp = 91;
+    AX_IVPS_GetScaleCoefLevelVgp = 92;
+
+    AX_IVPS_DrawLine = 101;
+    AX_IVPS_DrawPolygon = 102;
+    AX_IVPS_DrawRect = 103;
+
+    AX_IVPS_Dewarp = 111;
+    AX_PyraLite_Gen = 112;
+    AX_PyraLite_Rcn = 113;
+    AX_IVPS_GdcWorkCreate = 114;
+    AX_IVPS_GdcWorkAttrSet = 115;
+    AX_IVPS_GdcWorkRun = 116;
+    AX_IVPS_GdcWorkDestroy = 117;
+    AX_IVPS_FisheyePointQueryDst2Src = 118;
+    AX_IVPS_FisheyePointQuerySrc2Dst = 119;
+}
+
+message Request
+{
+    Api api = 1;
+    repeated bytes parameters = 2;
+}
+
+message Response
+{
+    Api api = 1;
+    repeated bytes parameters = 2;
+}

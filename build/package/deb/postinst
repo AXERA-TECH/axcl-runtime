@@ -4,21 +4,17 @@ set -e
 DRV_SOURCE_PATH=/usr/src/axcl/drv/pcie/driver
 DRV_INSTALL_PATH=/lib/modules/$(uname -r)/extra
 INSTALL_LOG_FILE=/var/log/axclhost-install.log
+HOST_CHIP=
 
 CORES=$(nproc)
 ARCH=`dpkg --print-architecture`
+
 if [ "$ARCH" = "arm64" ]; then
     ARCH=arm64
     DRV_BUILT_PATH=/usr/src/axcl/out/axcl_linux_arm64/ko
 elif [ "$ARCH" = "riscv64" ]; then
     ARCH=riscv
     DRV_BUILT_PATH=/usr/src/axcl/out/axcl_linux_riscv/ko
-elif [ "$ARCH" = "loong64" ]; then
-    ARCH=loongarch64
-    DRV_BUILT_PATH=/usr/src/axcl/out/axcl_linux_loongarch64/ko
-elif [ "$ARCH" = "loongarch64" ]; then
-    ARCH=loongarch64od
-    DRV_BUILT_PATH=/usr/src/axcl/out/axcl_linux_loongarch64od/ko
 else
     ARCH=x86
     DRV_BUILT_PATH=/usr/src/axcl/out/axcl_linux_x86/ko
@@ -62,7 +58,7 @@ case "$1" in
         cd ${DRV_SOURCE_PATH}
 
         # build driver
-        if ! make host=${ARCH} clean all install > ${INSTALL_LOG_FILE} 2>&1; then
+        if ! make host=${ARCH} chip=${HOST_CHIP} clean all install > ${INSTALL_LOG_FILE} 2>&1; then
             echo "\e[1;31m"
             echo "E: build driver fail, please check ${INSTALL_LOG_FILE}"
             echo "E: remove by: dpkg --force-remove-reinstreq --purge axclhost"
