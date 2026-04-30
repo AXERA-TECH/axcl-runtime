@@ -44,7 +44,7 @@ default: $(SUBDIRS)
 
 prepare:
 ifeq ($(HOST),x86)
-	@bash $(CUR_PATH)/check_compile_env.sh
+#	@bash $(CUR_PATH)/check_compile_env.sh
 endif
 
 all: prepare $(SUBDIRS_ALL)

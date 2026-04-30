@@ -1,1 +1,1 @@
-../../build/version.mak
+SDK_VERSION=V3.10.2
