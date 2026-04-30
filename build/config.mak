@@ -18,7 +18,7 @@ else ifeq ($(host),riscv)
 HOST                := riscv
 include $(AXCL_BUILD_PATH)/projects/$(NAME)_$(OS)_$(HOST)_config.mak
 else ifeq ($(host),)
-HOST                := ax650
+HOST                := x86
 include $(AXCL_BUILD_PATH)/projects/$(NAME)_$(OS)_$(HOST)_config.mak
 else
 $(error $(host) is unknown host)

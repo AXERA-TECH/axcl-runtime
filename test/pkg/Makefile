@@ -1,10 +1,7 @@
 CUR_PATH                  := $(shell pwd)
 SRC_PATH                  := $(CUR_PATH)
-HOME_PATH                 := $(abspath $(CUR_PATH)/../../..)
 
-include $(HOME_PATH)/axcl/build/config.mak
-
-MSP_HEADER_EXTERNAL_PATH  := $(HOME_PATH)/header/external
+include $(AXCL_HOME_PATH)/build/config.mak
 
 AXCL_HEADER_EXTERNAL_PATH := $(AXCL_HOME_PATH)/include/external
 AXCL_HEADER_INTERNAL_PATH := $(AXCL_HOME_PATH)/include/internal
@@ -34,7 +31,6 @@ CINCLUDE        := -I$(SRC_PATH) \
                    -I$(GTEST_INC_PATH) \
                    -I$(AXCL_HEADER_EXTERNAL_PATH) \
                    -I$(AXCL_HEADER_INTERNAL_PATH) \
-                   -I$(MSP_HEADER_EXTERNAL_PATH) \
                    -I$(AXCL_HOME_PATH)/protocol/include \
                    -I$(AXCL_HOME_PATH)/protocol \
                    -I$(AXCL_HOME_PATH)/toolkit

@@ -1,12 +1,10 @@
 CUR_PATH                  := $(shell pwd)
 SRC_PATH                  := $(CUR_PATH)
-HOME_PATH                 := $(abspath $(CUR_PATH)/../../..)
 
-include $(HOME_PATH)/axcl/build/config.mak
+include $(AXCL_HOME_PATH)/build/config.mak
 
 AXCL_HEADER_EXTERNAL_PATH := $(AXCL_HOME_PATH)/include/external
 AXCL_HEADER_INTERNAL_PATH := $(AXCL_HOME_PATH)/include/internal
-MSP_HEADER_EXTERNAL_PATH  := $(HOME_PATH)/header/external
 
 OUT_PATH                  := $(AXCL_OUT_PATH)
 OBJ_OUT_PATH              := $(AXCL_PRJ_OUT_PATH)/objs
@@ -32,7 +30,6 @@ SRCCPPS                   := $(wildcard $(SRC_PATH)/src/*.cpp) \
 CINCLUDE                  := -I$(SRC_PATH)/inc \
                              -I$(AXCL_HEADER_EXTERNAL_PATH) \
                              -I$(AXCL_HEADER_INTERNAL_PATH) \
-                             -I$(MSP_HEADER_EXTERNAL_PATH) \
                              -I$(SRC_PATH)/src/api \
                              -I$(SRC_PATH)/src/mgr \
                              -I$(SRC_PATH)/src/impl \

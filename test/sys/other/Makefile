@@ -1,8 +1,7 @@
 CUR_PATH                  := $(shell pwd)
 SRC_PATH                  := $(CUR_PATH)
-HOME_PATH                 := $(abspath $(CUR_PATH)/../../../..)
 
-include $(HOME_PATH)/axcl/build/config.mak
+include $(AXCL_HOME_PATH)/build/config.mak
 
 OUT_PATH                  := $(AXCL_OUT_PATH)
 OBJ_OUT_PATH              := $(AXCL_PRJ_OUT_PATH)/objs

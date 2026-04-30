@@ -1,12 +1,11 @@
-SUBDIRS = rt device context stream memory engine latency p2p event gather parallel usrwork
+SUBDIRS = rt device context stream memory engine latency event gather parallel
 
 ################################################################################
 #	prepare param
 ################################################################################
 CUR_PATH     := $(shell pwd)
-HOME_PATH    := $(abspath $(CUR_PATH)/../../..)
 
-include $(HOME_PATH)/axcl/build/config.mak
+include $(AXCL_HOME_PATH)/build/config.mak
 
 ################################################################################
 #	set task
