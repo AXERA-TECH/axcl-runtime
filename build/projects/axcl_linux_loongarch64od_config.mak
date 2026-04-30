@@ -1,5 +1,4 @@
 MKFILE_PATH  := $(abspath $(lastword $(MAKEFILE_LIST)))
-HOME_PATH    ?= $(abspath $(dir $(MKFILE_PATH))../../..)
 
 CROSS        := loongarch64-linux-gnu-
 CC            = $(CROSS)gcc

@@ -14,14 +14,14 @@
 #include "package/host/native/module/npu_request.hpp"
 #include "package/host/native/module/npu_response.hpp"
 
-#include <ax_engine_api.h>
+#include "ax_engine_api.h"
 
-class EnginePkgTest : public NativeTest<axcl::pkg::host::npu_request, axcl::pkg::device::npu_response,
-                                        axcl::pkg::device::npu_request, axcl::pkg::host::npu_response> {
+class EnginePkgTest : public NativeTest<axcl::pkg::host::npu_request, axcl::pkg::device::npu_response, axcl::pkg::device::npu_request,
+                                        axcl::pkg::host::npu_response> {
 protected:
     EnginePkgTest()
         : NativeTest<axcl::pkg::host::npu_request, axcl::pkg::device::npu_response, axcl::pkg::device::npu_request,
-                     axcl::pkg::host::npu_response>(axcl::pkg::native::module::ENGINE) {};
+                     axcl::pkg::host::npu_response>(axcl::pkg::native::module::ENGINE){};
 };
 
 TEST_F(EnginePkgTest, AX_ENGINE_Init) {

@@ -4,9 +4,8 @@ SUBDIRS = pkg rt sys/cmm sys/other sys/pool ive npu venc vdec
 #	prepare param
 ################################################################################
 CUR_PATH                  := $(shell pwd)
-HOME_PATH                 := $(abspath $(CUR_PATH)/../..)
 
-include $(HOME_PATH)/axcl/build/config.mak
+include $(AXCL_HOME_PATH)/build/config.mak
 
 ################################################################################
 #	set task

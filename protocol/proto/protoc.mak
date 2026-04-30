@@ -1,6 +1,5 @@
 CUR_PATH               := $(shell pwd)
 AXCL_HOME_PATH         := $(abspath $(CUR_PATH)/../..)
-HOME_PATH              := $(abspath $(CUR_PATH)/../../..)
 AXCL_PROTOBUF_PATH     := $(AXCL_HOME_PATH)/3rdparty/protobuf
 PROTOC                 := $(AXCL_PROTOBUF_PATH)/x64/bin/protoc
 

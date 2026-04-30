@@ -1,12 +1,11 @@
-SUBDIRS = token runtime native skel smi spl_update
+SUBDIRS = token runtime native smi spl_update
 
 ################################################################################
 #	prepare param
 ################################################################################
 CUR_PATH                  := $(shell pwd)
-HOME_PATH                 := $(abspath $(CUR_PATH)/../..)
 
-include $(HOME_PATH)/axcl/build/config.mak
+include $(AXCL_HOME_PATH)/build/config.mak
 
 ################################################################################
 #	set task
@@ -25,24 +24,7 @@ install: $(SUBDIRS_INSTALL)
 
 prepare:
 	@$(MKDIR) $(AXCL_INC_PATH)
-	@$(CP) $(HOME_PATH)/header/external/ax_buffer_tool.h $(AXCL_INC_PATH)/
-	@$(CP) $(HOME_PATH)/header/external/ax_base_type.h $(AXCL_INC_PATH)/
-	@$(CP) $(HOME_PATH)/header/external/ax_global_type.h $(AXCL_INC_PATH)/
-	@$(CP) $(HOME_PATH)/header/external/ax_pool_type.h $(AXCL_INC_PATH)/
-	@$(CP) $(HOME_PATH)/header/external/ax_ivps_type.h $(AXCL_INC_PATH)/
-	@$(CP) $(HOME_PATH)/header/external/ax_codec_comm.h $(AXCL_INC_PATH)/
-	@$(CP) $(HOME_PATH)/header/external/ax_venc_rc.h $(AXCL_INC_PATH)/
-	@$(CP) $(HOME_PATH)/header/external/ax_venc_exif.h $(AXCL_INC_PATH)/
-	@$(CP) $(HOME_PATH)/header/external/ax_engine_type.h $(AXCL_INC_PATH)/
-	@$(CP) $(HOME_PATH)/header/external/ax_ive_type.h $(AXCL_INC_PATH)/
-	@$(CP) $(HOME_PATH)/header/external/ax_ivps_api.h $(AXCL_INC_PATH)/
-	@$(CP) $(HOME_PATH)/header/external/ax_sys_api.h $(AXCL_INC_PATH)/
-	@$(CP) $(HOME_PATH)/header/external/ax_vdec_type.h $(AXCL_INC_PATH)/
-	@$(CP) $(HOME_PATH)/header/external/ax_venc_comm.h $(AXCL_INC_PATH)/
-	@$(CP) $(HOME_PATH)/header/external/ax_dmadim_api.h $(AXCL_INC_PATH)/
-	@$(CP) $(HOME_PATH)/header/external/ax_dsp_api.h $(AXCL_INC_PATH)/
-
-	@$(CP) $(HOME_PATH)/axcl/include/external/*.h  $(AXCL_INC_PATH)/
+	@$(CP) $(AXCL_HOME_PATH)/include/external/*.h  $(AXCL_INC_PATH)/
 
 # remove api define in msp api header files
 	@sed -i '/^#ifdef __cplusplus$$/,/^#endif \/\/_AX_SYS_API_$$/{ /^#endif \/\/_AX_SYS_API_$$/!d }' $(AXCL_INC_PATH)/ax_sys_api.h

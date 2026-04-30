@@ -1,9 +1,8 @@
 CUR_PATH                  := $(shell pwd)
 SRC_PATH                  := $(CUR_PATH)
-HOME_PATH                 := $(abspath $(CUR_PATH)/../../..)
 
-include $(HOME_PATH)/axcl/build/config.mak
-include $(HOME_PATH)/axcl/protocol/config.mak
+include $(AXCL_HOME_PATH)/build/config.mak
+include $(AXCL_HOME_PATH)/protocol/config.mak
 
 PROTO_BUF_LIB_PATH        := $(AXCL_HOME_PATH)/3rdparty/protobuf/$(ARCH)/lib
 PROTO_BUF_INC_PATH        := $(AXCL_HOME_PATH)/3rdparty/protobuf/$(ARCH)/include

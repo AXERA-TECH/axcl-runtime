@@ -1,8 +1,7 @@
 CUR_PATH                  := $(shell pwd)
 SRC_PATH                  := $(CUR_PATH)
-HOME_PATH                 := $(abspath $(CUR_PATH)/../../../..)
 
-include $(HOME_PATH)/axcl/build/config.mak
+include $(AXCL_HOME_PATH)/build/config.mak
 
 AXCL_HEADER_EXTERNAL_PATH := $(AXCL_HOME_PATH)/include/external
 AXCL_HEADER_INTERNAL_PATH := $(AXCL_HOME_PATH)/include/internal
@@ -58,12 +57,7 @@ endif
 # dependency
 CLIB                      := -lstdc++ -pthread
 CLIB                      += -L$(GTEST_LIB_PATH) -lgtest -lgtest_main -lm
-ifeq ($(HOST),ax650)
-CLIB                      += -Wl,-rpath-link=$(AXCL_LIB_PATH):$(MSP_LIB_PATH)
-CLIB                      += -L$(MSP_LIB_PATH) -lax_sys
-else
 CLIB                      += -Wl,-rpath-link=$(AXCL_LIB_PATH)
-endif
 CLIB                      += -L$(AXCL_LIB_PATH) -laxcl_rt
 
 # install

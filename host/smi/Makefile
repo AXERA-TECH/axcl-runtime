@@ -1,8 +1,7 @@
 CUR_PATH                  := $(shell pwd)
 SRC_PATH                  := $(CUR_PATH)
-HOME_PATH                 := $(abspath $(CUR_PATH)/../../..)
 
-include $(HOME_PATH)/axcl/build/config.mak
+include $(AXCL_HOME_PATH)/build/config.mak
 
 AXCL_HEADER_EXTERNAL_PATH := $(AXCL_HOME_PATH)/include/external
 AXCL_HEADER_INTERNAL_PATH := $(AXCL_HOME_PATH)/include/internal
@@ -12,8 +11,6 @@ OUT_PATH                  := $(AXCL_OUT_PATH)
 OBJ_OUT_PATH              := $(AXCL_PRJ_OUT_PATH)/objs
 SRC_RELATIVE_PATH         := $(subst $(AXCL_HOME_PATH)/,,$(SRC_PATH))
 TARGET_OUT_PATH           := $(OBJ_OUT_PATH)/$(SRC_RELATIVE_PATH)
-
-MSP_LIB_PATH              := $(HOME_PATH)/msp/out/lib
 
 # output
 MOD_NAME                  := axcl-smi
@@ -53,12 +50,7 @@ endif
 
 # dependency
 CLIB                      := -lstdc++ -pthread -lm
-ifeq ($(HOST),ax650)
-CLIB                      += -Wl,-rpath-link=$(AXCL_LIB_PATH):$(MSP_LIB_PATH)
-CLIB                      += -L$(MSP_LIB_PATH) -lax_sys
-else
 CLIB                      += -Wl,-rpath-link=$(AXCL_LIB_PATH)
-endif
 CLIB                      += -L$(AXCL_LIB_PATH) -laxcl_rt -laxcl_npu
 
 # install

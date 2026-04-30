@@ -3,9 +3,8 @@
 ################################################################################
 CUR_PATH                  := $(shell pwd)
 SRC_PATH                  := $(CUR_PATH)
-HOME_PATH                 := $(abspath $(CUR_PATH)/../../..)
 
-include $(HOME_PATH)/axcl/build/config.mak
+include $(AXCL_HOME_PATH)/build/config.mak
 
 GTEST_LIB_PATH            := $(AXCL_HOME_PATH)/3rdparty/googletest/arm64/lib
 GTEST_INC_PATH            := $(AXCL_HOME_PATH)/3rdparty/googletest/arm64/include

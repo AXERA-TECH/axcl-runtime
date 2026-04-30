@@ -1,13 +1,11 @@
 CUR_PATH                  := $(shell pwd)
 SRC_PATH                  := $(CUR_PATH)
-HOME_PATH                 := $(abspath $(CUR_PATH)/../..)
 
 include $(SRC_PATH)/config.mak
-include $(HOME_PATH)/axcl/build/config.mak
+include $(AXCL_HOME_PATH)/build/config.mak
 
 AXCL_HEADER_EXTERNAL_PATH := $(AXCL_HOME_PATH)/include/external
 AXCL_HEADER_INTERNAL_PATH := $(AXCL_HOME_PATH)/include/internal
-HOME_HEADER_EXTERNAL_PATH := $(HOME_PATH)/header/external
 ZMQ_LIB_PATH              := $(AXCL_HOME_PATH)/3rdparty/zmq/$(ARCH)
 
 OUT_PATH                  := $(AXCL_OUT_PATH)
@@ -37,7 +35,6 @@ CINCLUDE                  := -I$(SRC_PATH)/impl \
                              -I$(AXCL_HOME_PATH)/3rdparty/spdlog/$(ARCH)/include \
                              -I$(AXCL_HEADER_EXTERNAL_PATH) \
                              -I$(AXCL_HEADER_INTERNAL_PATH) \
-                             -I$(HOME_HEADER_EXTERNAL_PATH) \
                              -I$(AXCL_HOME_PATH)/3rdparty/zmq/include
 
 OBJS                      := $(SRCCPPS:%.cpp=$(OUTPUT)/%.o)

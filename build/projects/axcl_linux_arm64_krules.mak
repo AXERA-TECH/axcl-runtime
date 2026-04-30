@@ -9,7 +9,6 @@ KERNEL_DIR      := /lib/modules/$(KERNEL_VER)
 #  Desc: TARGET
 #  -----------------------------------------------------------------------------
 MKFILE_PATH     := $(abspath $(lastword $(MAKEFILE_LIST)))
-HOME_PATH       ?= $(abspath $(dir $(MKFILE_PATH))../../..)
 KERNEL_BUILD    ?= $(KERNEL_DIR)/build
 DEBUG_OUT_PATH  := $(MOD_TARGET_PATH)/debug_ko
 
