@@ -63,7 +63,6 @@ make_arm64() {
         --cc=${CROSS}gcc \
         --enable-shared \
         --disable-static \
-        --enable-gpl \
         --enable-muxer=mp4 \
         --enable-muxer=flv \
         --enable-muxer=h264 \
@@ -99,7 +98,6 @@ make_arm64() {
         --cc=${CROSS}gcc \
         --enable-shared \
         --disable-static \
-        --enable-gpl \
         --enable-muxer=mp4 \
         --enable-muxer=flv \
         --enable-muxer=h264 \
@@ -142,7 +140,6 @@ make_riscv() {
         --cc=${CROSS}gcc \
         --enable-shared \
         --disable-static \
-        --enable-gpl \
         --enable-muxer=mp4 \
         --enable-muxer=flv \
         --enable-muxer=h264 \
@@ -178,7 +175,6 @@ make_riscv() {
         --cc=${CROSS}gcc \
         --enable-shared \
         --disable-static \
-        --enable-gpl \
         --enable-muxer=mp4 \
         --enable-muxer=flv \
         --enable-muxer=h264 \
@@ -221,7 +217,6 @@ make_x86() {
         --cc=${CROSS}gcc \
         --enable-shared \
         --disable-static \
-        --enable-gpl \
         --enable-muxer=mp4 \
         --enable-muxer=flv \
         --enable-muxer=h264 \
@@ -257,7 +252,6 @@ make_x86() {
         --cc=${CROSS}gcc \
         --enable-shared \
         --disable-static \
-        --enable-gpl \
         --enable-muxer=mp4 \
         --enable-muxer=flv \
         --enable-muxer=h264 \
