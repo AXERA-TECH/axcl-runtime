@@ -2,6 +2,9 @@
 
 本文档说明如何在 AXCL 现有 build 系统中接入新的 host 工具链。示例场景为 OpenWrt arm64 gcc。
 
+Android arm64 平台通过独立适配补丁接入，应用补丁后启用 Android 构建入口。
+Android 适配流程、驱动准备方式及 Orange Pi 5 / Android 12 / Linux 5.10.160 已实测参考环境见 [Android arm64 适配指南](android-porting/README.md)。
+
 > **Tip**
 > 新增工具链前，建议先完整执行一次现有 `host=x86` 编译，保留一份可工作的基线结果，后续对比会更直接。
 
